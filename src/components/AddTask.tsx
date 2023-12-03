@@ -1,21 +1,19 @@
 import { useContext, useState } from 'react';
 import { TodoDispatchContext } from '../context/TodoContext';
+import { addTask } from '../reducer/actions';
 
 export const AddTask = () => {
   const dispatch = useContext(TodoDispatchContext);
 
   const [text, setText] = useState<string>('');
 
-  const handleOnChange = (e) => {
-    setText(e.target.value);
+  const handleOnChange = (event) => {
+    setText(event.target.value);
   };
 
   const handleAddTask = () => {
     if (text.length === 0) return;
-    dispatch({
-      type: 'Add task',
-      payload: { id: Math.random(), description: text, state: false },
-    });
+    dispatch(addTask(text));
     setText('');
   };
 
@@ -28,10 +26,10 @@ export const AddTask = () => {
       <input
         className="form-control mb-2"
         type="text"
-        name="description"
         placeholder="Agregar tarea"
+        name="description"
         value={text}
-        onChange={(e) => handleOnChange(e)}
+        onChange={(event) => handleOnChange(event)}
       />
       <button
         onClick={() => handleAddTask()}

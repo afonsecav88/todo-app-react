@@ -7,13 +7,14 @@ export type TodoActions =
     }
   | { type: 'Remove task' };
 
-export const addTask = (): Task => {
+export const addTask = (description: string): TodoActions => {
+  const payload: Task = { id: Math.random(), description, state: false };
   return {
     type: 'Add task',
-    payload: Task,
+    payload,
   };
 };
 
-export const removeTask = (): Task[] => {
+export const removeTask = (): TodoActions => {
   return { type: 'Remove task' };
 };
