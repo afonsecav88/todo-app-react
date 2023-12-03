@@ -8,7 +8,7 @@ export const TodoReducer = (state: Task[], action: TodoActions): Task[] => {
     }
 
     case 'Remove task': {
-      return state.filter((task: Task) => task.id !== action.payload.id);
+      return state.filter((task: Task) => task.id !== action.id);
     }
 
     default: {

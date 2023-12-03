@@ -1,10 +1,11 @@
 import { useContext } from 'react';
 import { TodoDispatchContext } from '../context/TodoContext';
+import { removeTask } from '../reducer/actions';
 
-export const ItemTask = ({ item }) => {
+export const ListItemTask = ({ item }) => {
   const dispatch = useContext(TodoDispatchContext);
   const handleOnClick = () => {
-    dispatch({ type: '' });
+    dispatch(removeTask(item.id));
   };
   return (
     <>

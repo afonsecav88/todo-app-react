@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { ItemTask } from './ItemTask';
+import { ListItemTask } from './ListItemTask';
 import { TodoContext } from '../context/TodoContext';
 import { Task } from '../interfaces/interfaces';
 
@@ -13,7 +13,7 @@ export const ListTask = () => {
             key={item.id}
             className="list-group-item d-flex justify-content-between"
           >
-            <ItemTask item={item} />
+            <ListItemTask item={item} />
           </li>
         ))}
       </ul>
