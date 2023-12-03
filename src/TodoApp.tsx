@@ -1,18 +1,26 @@
+import { useReducer, useContext } from 'react';
 import { AddTask } from './components/AddTask';
 import { ListTask } from './components/ListTask';
-import { TodoProvider } from './context/TodoProvider';
+import { TodoContext, TodoDispatchContext } from './context/TodoContext';
+import { TodoReducer } from './reducer/TodoReducer';
 
 export const TodoApp = () => {
+  const initialState = useContext(TodoContext);
+  const [state, dispatch] = useReducer(TodoReducer, initialState);
   return (
-    <TodoProvider>
-      <div className="col d-flex justify-content-between align-content-around container">
-        <div className="row-md-6">
-          <ListTask />
+    <TodoContext.Provider value={state}>
+      <TodoDispatchContext.Provider value={dispatch}>
+        <h1 className="m-2">Lista de tareas:</h1>
+        <hr />
+        <div className="col d-flex justify-content-between align-content-around container gap-3 ">
+          <div className="row-md-8">
+            <ListTask />
+          </div>
+          <div className="row-md-4">
+            <AddTask />
+          </div>
         </div>
-        <div className="row-md-6">
-          <AddTask />
-        </div>
-      </div>
-    </TodoProvider>
+      </TodoDispatchContext.Provider>
+    </TodoContext.Provider>
   );
 };
