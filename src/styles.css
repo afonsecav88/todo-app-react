@@ -1,3 +1,8 @@
+html , body {
+   background-color: #413f3f;
+   color: white;
+}
+
 .button-disable {
    display: none; 
 }
