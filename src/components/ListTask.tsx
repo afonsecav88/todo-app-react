@@ -7,12 +7,9 @@ export const ListTask = () => {
   const initialTask: Task[] = useContext<Task[]>(TodoContext);
   return (
     <>
-      <ul className="list-group mt-3 ">
+      <ul className="list-group mt-3">
         {initialTask.map((item) => (
-          <li
-            key={item.id}
-            className="list-group-item d-flex justify-content-between"
-          >
+          <li key={item.id} className="list-group-item d-flex">
             <ListItemTask item={item} />
           </li>
         ))}

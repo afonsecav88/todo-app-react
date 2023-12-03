@@ -12,7 +12,7 @@ export const TodoApp = () => {
       <TodoDispatchContext.Provider value={dispatch}>
         <h1 className="m-2">Lista de tareas:</h1>
         <hr />
-        <div className="col d-flex justify-content-between align-content-around container gap-3 ">
+        <div className="col d-flex gap-2 justify-content-around flex-wrap">
           <div className="row-md-8">
             <ListTask />
           </div>

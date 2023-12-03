@@ -1,0 +1,10 @@
+.button-disable {
+   display: none; 
+}
+.input-disable {
+   border: 0;
+   box-shadow: none;
+   background-color: white;
+   width: 30vh;
+}
+

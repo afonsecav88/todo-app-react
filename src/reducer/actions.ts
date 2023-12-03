@@ -5,12 +5,24 @@ export type TodoActions =
       type: 'Add task';
       payload: Task;
     }
-  | { type: 'Remove task'; id };
+  | {
+      type: 'Edit task';
+      payload: Task;
+    }
+  | { type: 'Remove task'; id: number };
 
 export const addTask = (description: string): TodoActions => {
   const payload: Task = { id: Math.random(), description, state: false };
   return {
     type: 'Add task',
+    payload,
+  };
+};
+
+export const editTask = (task: Task) => {
+  const payload: Task = task;
+  return {
+    type: 'Edit task',
     payload,
   };
 };

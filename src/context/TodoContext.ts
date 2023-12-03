@@ -3,12 +3,12 @@ import { Task } from '../interfaces/interfaces';
 
 export const TodoContext = createContext<Task[]>([
   {
-    id: 'sass222ss',
+    id: 5555544,
     description: 'Esta es mi primera tarea',
     state: false,
   },
   {
-    id: 'sass222sssss',
+    id: 66666444,
     description: 'Esta es mi segunda tarea',
     state: false,
   },

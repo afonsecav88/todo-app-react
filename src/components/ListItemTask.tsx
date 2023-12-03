@@ -1,20 +1,49 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { TodoDispatchContext } from '../context/TodoContext';
-import { removeTask } from '../reducer/actions';
+import { editTask, removeTask } from '../reducer/actions';
 
 export const ListItemTask = ({ item }) => {
   const dispatch = useContext(TodoDispatchContext);
-  const handleOnClick = () => {
+
+  const [isEdit, setIsEdit] = useState(true)
+  const [valueDescription, setValueDescription] = useState<string>(item.description);
+
+  const handleDelete = () => {
     dispatch(removeTask(item.id));
   };
+
+  const handleEdit = () => {
+    setIsEdit(true)
+    dispatch(editTask(item.id));
+  };
+
+  const handleOnChange = (event) => {
+    setValueDescription(event.target.value)
+  }
+
   return (
     <>
-      {item.description}
+
+      <input type="text" name="description" disabled={isEdit} value={valueDescription} onChange={(event) => handleOnChange(event)} className={`d-flex ${(isEdit) ? 'input-disable' : ''}`} />
       <button
-        onClick={() => handleOnClick()}
-        className="bnt btn alert-danger btn-sm"
+        onClick={() => handleDelete()}
+        className="btn btn-danger btn-sm ms-3 me-2"
       >
         Eliminar
+      </button>
+
+      <button
+        onClick={() => setIsEdit(false)}
+        className={`btn btn-primary btn-sm display-6  ${(!isEdit) ? 'button-disable' : ''}`}
+      >
+        Editar
+      </button>
+
+      <button
+        onClick={() => handleEdit()}
+        className={`btn btn-outline-success  btn-sm  ${(isEdit) ? 'button-disable' : ''}`}
+      >
+        Guardar Cambios
       </button>
     </>
   );

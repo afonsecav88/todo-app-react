@@ -19,13 +19,14 @@ export const AddTask = () => {
 
   return (
     <>
-      <label className="mb-2" htmlFor="">
+      <label className="mb-2" htmlFor="insert_task">
         Insertar tarea:
       </label>
       <br />
       <input
         className="form-control mb-2"
         type="text"
+        id='insert_task'
         placeholder="Agregar tarea"
         name="description"
         value={text}
@@ -34,7 +35,7 @@ export const AddTask = () => {
       <button
         onClick={() => handleAddTask()}
         type="submit"
-        className="mb-2 btn btn-primary btn-sm display-6"
+        className="mb-2 btn btn-success btn-sm float-end "
       >
         Agregar Tarea
       </button>
