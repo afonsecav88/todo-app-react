@@ -1,21 +1,8 @@
-import { useContext, useState } from 'react';
-import { TodoDispatchContext } from '../context/TodoContext';
-import { addTask } from '../reducer/actions';
+import { useAddTask } from '../hooks/useAddTask';
 
 export const AddTask = () => {
-  const dispatch = useContext(TodoDispatchContext);
 
-  const [text, setText] = useState<string>('');
-
-  const handleOnChange = (event) => {
-    setText(event.target.value);
-  };
-
-  const handleAddTask = () => {
-    if (text.length === 0) return;
-    dispatch(addTask(text));
-    setText('');
-  };
+  const { handleOnChange, handleAddTask, text } = useAddTask()
 
   return (
     <>

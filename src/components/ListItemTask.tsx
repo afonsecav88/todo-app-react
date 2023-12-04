@@ -1,46 +1,38 @@
-import { useContext, useState } from 'react';
-import { TodoDispatchContext } from '../context/TodoContext';
-import { editTask, removeTask } from '../reducer/actions';
+import { Task } from '../interfaces/interfaces';
+import { useEditTask } from '../hooks/useEditTask';
 
-export const ListItemTask = ({ item }) => {
-  const dispatch = useContext(TodoDispatchContext);
+type ListTaskProps = {
+  item: Task;
+}
 
-  const [isEdit, setIsEdit] = useState(true)
-  const [valueDescription, setValueDescription] = useState<string>(item.description);
+export const ListItemTask = ({ item }: ListTaskProps) => {
 
-  const handleDelete = () => {
-    dispatch(removeTask(item.id));
-  };
-
-  const handleEdit = () => {
-    setIsEdit(true)
-    dispatch(editTask(item.id));
-  };
-
-  const handleOnChange = (event) => {
-    setValueDescription(event.target.value)
-  }
-
+  const { isEdit,
+    valueDescription,
+    handleDeleteTask,
+    handleEditTask,
+    handleSetIsEdit,
+    handleOnChange, } = useEditTask(item)
   return (
     <>
 
-      <input type="text" name="description" disabled={isEdit} value={valueDescription} onChange={(event) => handleOnChange(event)} className={`d-flex ${(isEdit) ? 'input-disable' : ''}`} />
+      <input type="text" name="description" disabled={isEdit} value={valueDescription} onChange={(event) => handleOnChange(event)} className={`d-flex me-2 ${(isEdit) ? 'input-disable' : ''}`} />
       <button
-        onClick={() => handleDelete()}
-        className="btn btn-danger btn-sm ms-3 me-2"
+        onClick={() => handleDeleteTask()}
+        className="btn btn-danger btn-sm ms-1 me-2"
       >
         Eliminar
       </button>
 
       <button
-        onClick={() => setIsEdit(false)}
+        onClick={() => handleEditSetIsEdit()}
         className={`btn btn-primary btn-sm display-6  ${(!isEdit) ? 'button-disable' : ''}`}
       >
         Editar
       </button>
 
       <button
-        onClick={() => handleEdit()}
+        onClick={() => handleEditTask()}
         className={`btn btn-outline-success  btn-sm  ${(isEdit) ? 'button-disable' : ''}`}
       >
         Guardar Cambios
