@@ -13,6 +13,8 @@ export const ListItemTask = ({ item }: ListTaskProps) => {
     handleEditTask,
     handleSetIsEdit,
     handleOnChange, } = useEditTask(item)
+
+
   return (
     <>
 
@@ -25,7 +27,7 @@ export const ListItemTask = ({ item }: ListTaskProps) => {
       </button>
 
       <button
-        onClick={() => handleEditSetIsEdit()}
+        onClick={() => handleSetIsEdit()}
         className={`btn btn-primary btn-sm display-6  ${(!isEdit) ? 'button-disable' : ''}`}
       >
         Editar

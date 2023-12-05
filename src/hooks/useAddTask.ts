@@ -4,7 +4,6 @@ import { addTask } from '../reducer/actions';
 
 export const useAddTask = () => {
   const dispatch = useContext(TodoDispatchContext);
-
   const [text, setText] = useState<string>('');
 
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
