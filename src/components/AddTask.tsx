@@ -1,9 +1,12 @@
+
 import { useAddTask } from '../hooks/useAddTask';
+import { useUpdateLocalStorage } from '../hooks/useUpdateLocalStorage';
+
 
 export const AddTask = () => {
 
   const { handleOnChange, handleAddTask, text } = useAddTask()
-
+  useUpdateLocalStorage();
   return (
     <>
       <label className="mb-2" htmlFor="insert_task">

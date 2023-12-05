@@ -1,5 +1,6 @@
 import { Task } from '../interfaces/interfaces';
 import { useEditTask } from '../hooks/useEditTask';
+import { useUpdateLocalStorage } from '../hooks/useUpdateLocalStorage';
 
 type ListTaskProps = {
   item: Task;
@@ -7,13 +8,14 @@ type ListTaskProps = {
 
 export const ListItemTask = ({ item }: ListTaskProps) => {
 
+  useUpdateLocalStorage();
+
   const { isEdit,
     valueDescription,
     handleDeleteTask,
     handleEditTask,
     handleSetIsEdit,
     handleOnChange, } = useEditTask(item)
-
 
   return (
     <>

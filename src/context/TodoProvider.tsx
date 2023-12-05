@@ -1,21 +1,21 @@
-// import { Task } from '../interfaces/interfaces';
-// import { TodoContext } from './TodoContext';
 
-// const initialState: Task[] = [
-//   {
-//     id: 'sass222ss',
-//     description: 'Esta es mi primera tarea',
-//     state: false,
-//   },
-//   {
-//     id: 'sass222sssss',
-//     description: 'Esta es mi segunda tarea',
-//     state: false,
-//   },
-// ];
+import { useContext, useReducer } from 'react';
+import { TodoContext, TodoDispatchContext } from './TodoContext';
+import { TodoReducer } from '../reducer/TodoReducer';
 
-// export const TodoProvider = ({ children }) => {
-//   return (
-//     <TodoContext.Provider value={initialState}>{children}</TodoContext.Provider>
-//   );
-// };
+
+export const TodoProvider = ({ children }) => {
+
+   const initializer = () => JSON.parse(localStorage.getItem('Tasks')) || [];
+
+   const initialState = useContext(TodoContext);
+   const [state, dispatch] = useReducer(TodoReducer, initialState, initializer);
+
+   return (
+      <TodoContext.Provider value={state}>
+         <TodoDispatchContext.Provider value={dispatch}>
+            {children}
+         </TodoDispatchContext.Provider>
+      </TodoContext.Provider>
+   );
+};
