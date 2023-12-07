@@ -6,7 +6,6 @@ export const ListTask = () => {
   const initialState = useTodoContext();
   return (
     <>
-      {console.log(initialState)}
       <ul className="list-group mt-3">
         {initialState.map((item: Task) => (
           <li key={item.id} className="list-group-item d-flex">

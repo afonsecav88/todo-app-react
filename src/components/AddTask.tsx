@@ -1,11 +1,8 @@
-
 import { useAddTask } from '../hooks/useAddTask';
 import { useUpdateLocalStorage } from '../hooks/useUpdateLocalStorage';
 
-
 export const AddTask = () => {
-
-  const { handleOnChange, handleAddTask, text } = useAddTask()
+  const { handleOnChange, handleAddTask, text } = useAddTask();
   useUpdateLocalStorage();
   return (
     <>
@@ -16,7 +13,7 @@ export const AddTask = () => {
       <input
         className="form-control mb-2"
         type="text"
-        id='insert_task'
+        id="insert_task"
         placeholder="Agregar tarea"
         name="description"
         value={text}
