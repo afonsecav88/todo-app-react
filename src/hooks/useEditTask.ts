@@ -10,17 +10,18 @@ export const useEditTask = (item: Task) => {
     item.description
   );
 
+  const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setValueDescription(event.target.value);
+  };
+
   const handleDeleteTask = () => {
     dispatch(removeTask(item.id));
   };
 
   const handleEditTask = () => {
     setIsEdit(true);
-    dispatch(editTask(item.id));
-  };
-
-  const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setValueDescription(event.target.value);
+    const newItem = { ...item, description: valueDescription };
+    dispatch(editTask(newItem));
   };
 
   const handleSetIsEdit = () => {

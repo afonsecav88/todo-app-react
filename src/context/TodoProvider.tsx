@@ -1,21 +1,24 @@
-
-import { useContext, useReducer } from 'react';
+import { useReducer } from 'react';
 import { TodoContext, TodoDispatchContext } from './TodoContext';
 import { TodoReducer } from '../reducer/TodoReducer';
+import { Task } from '../interfaces/interfaces';
 
+interface TodoProviderProps {
+  children: JSX.Element | JSX.Element[];
+}
 
-export const TodoProvider = ({ children }) => {
+const initialState: Task[] = [];
 
-   const initializer = () => JSON.parse(localStorage.getItem('Tasks')) || [];
+export const TodoProvider = ({ children }: TodoProviderProps) => {
+  const initializer = () => JSON.parse(localStorage.getItem('Tasks')) || [];
 
-   const initialState = useContext(TodoContext);
-   const [state, dispatch] = useReducer(TodoReducer, initialState, initializer);
+  const [state, dispatch] = useReducer(TodoReducer, initialState, initializer);
 
-   return (
-      <TodoContext.Provider value={state}>
-         <TodoDispatchContext.Provider value={dispatch}>
-            {children}
-         </TodoDispatchContext.Provider>
-      </TodoContext.Provider>
-   );
+  return (
+    <TodoContext.Provider value={state}>
+      <TodoDispatchContext.Provider value={dispatch}>
+        {children}
+      </TodoDispatchContext.Provider>
+    </TodoContext.Provider>
+  );
 };

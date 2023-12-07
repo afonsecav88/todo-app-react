@@ -10,8 +10,9 @@ export const TodoReducer = (tasks: Task[], action: TodoActions): Task[] => {
       return tasks.map((task: Task) => {
         if (task.id === action.payload.id) {
           return action.payload;
+        } else {
+          return task;
         }
-        return task;
       });
     }
     case 'Remove task': {

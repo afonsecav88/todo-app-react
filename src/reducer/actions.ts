@@ -19,8 +19,7 @@ export const addTask = (description: string): TodoActions => {
   };
 };
 
-export const editTask = (task: Task) => {
-  const payload: Task = task;
+export const editTask = (payload: Task): TodoActions => {
   return {
     type: 'Edit task',
     payload,
