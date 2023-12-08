@@ -1,10 +1,10 @@
 import { ChangeEvent, useState } from 'react';
 import { removeTask, editTask } from '../reducer/actions';
 import { Task } from '../interfaces/interfaces';
-import { useTodoDispatchContext } from './useTodoDispatchContext';
+import { useTodoContext } from './useTodoContext';
 
 export const useEditTask = (item: Task) => {
-  const dispatch = useTodoDispatchContext();
+  const { dispatch } = useTodoContext();
   const [isEdit, setIsEdit] = useState(true);
   const [valueDescription, setValueDescription] = useState<string>(
     item.description

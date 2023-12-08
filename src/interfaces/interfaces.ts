@@ -3,3 +3,7 @@ export interface Task {
   description: string;
   state: boolean;
 }
+
+export interface ListTasks {
+  tasks: Task[];
+}

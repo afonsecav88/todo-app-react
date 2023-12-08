@@ -2,7 +2,11 @@ import { Dispatch, createContext } from 'react';
 import { TodoActions } from '../reducer/actions';
 import { Task } from '../interfaces/interfaces';
 
-export const TodoContext = createContext<Task[]>([]);
-export const TodoDispatchContext = createContext<Dispatch<TodoActions>>(
-  {} as Dispatch<TodoActions>
+type PropsTodoContext = {
+  tasks: Task[];
+  dispatch: Dispatch<TodoActions>;
+};
+
+export const TodoContext = createContext<PropsTodoContext>(
+  {} as PropsTodoContext
 );

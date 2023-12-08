@@ -1,9 +1,9 @@
 import { useState, ChangeEvent } from 'react';
 import { addTask } from '../reducer/actions';
-import { useTodoDispatchContext } from './useTodoDispatchContext';
+import { useTodoContext } from './useTodoContext';
 
 export const useAddTask = () => {
-  const dispatch = useTodoDispatchContext();
+  const { dispatch } = useTodoContext();
   const [text, setText] = useState<string>('');
 
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
