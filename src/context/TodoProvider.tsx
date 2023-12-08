@@ -10,7 +10,7 @@ interface TodoProviderProps {
 const initialState: ListTasks[] = [];
 
 export const TodoProvider = ({ children }: TodoProviderProps) => {
-  const initializer = () => JSON.parse(localStorage.getItem('Tasks')) || [];
+  const initializer = () => JSON.parse(localStorage.getItem('Tasks')!) || [];
 
   const [tasks, dispatch] = useReducer(TodoReducer, initialState, initializer);
 
